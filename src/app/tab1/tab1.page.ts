@@ -12,11 +12,6 @@ export class Tab1Page implements OnInit {
   //arreglo
   peliculasRecientes: Pelicula[] = [];
 
-  //objeto de mas opciones de imagen
-  slideOpts = {
-    slidesPerView: 1.3,
-    freeMode: true
-  };
 
   constructor( private moviesService: MoviesService ) {}
 
