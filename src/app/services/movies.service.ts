@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Query } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { RespuestaMDB } from '../interfaces/interfaces';
+import { PeliculaDetalle, RespuestaCredits, RespuestaMDB } from '../interfaces/interfaces';
 
 
 //variables de ambiente de la api 
@@ -23,21 +23,35 @@ export class MoviesService {
     query = URL + query;
     query += `&api_key=${ apikey }&language=es&include_image_lenguage=es`;
 
+
     return this.http.get<T>( query );
   }
 
   //metodo peliculas populares
-  getPopulares(){
-
+  getPopulares()
+  {
     this.popularesPage++;
     const query = `/discover/movie?sort_by=popularity.desc&page=${this.popularesPage}`;
     return this.ejecutarQuery<RespuestaMDB>(query);
 
   }
 
-  //primer servicio
-  getFeature(){
+  //metodo obtener detalle pelicula
+  getPeliculaDetalle( id: string)
+  {
+    return this.ejecutarQuery<PeliculaDetalle>(`/movie/${id}?a=1`);
 
+  }
+
+   //metodo obtener detalle pelicula
+   getActoresPelicula( id: string)
+   {
+     return this.ejecutarQuery<RespuestaCredits>(`/movie/${id}/credits?a=1`);
+   }
+
+  //primer servicio
+  getFeature()
+  {
     const hoy = new Date();
     const ultimoDia = new Date( hoy.getFullYear(), hoy.getMonth() + 1, 0).getDate();
     const mes = hoy.getMonth() + 1;
