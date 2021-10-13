@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Pelicula } from '../../interfaces/interfaces';
+import { DetalleComponent } from '../detalle/detalle.component';
 
 @Component({
   selector: 'app-slideshow-pares',
@@ -18,9 +20,21 @@ slideOpts = {
   spaceBetween: -10
 };
 
-  constructor() { }
+  constructor( private modalCtrl: ModalController) { }
 
   ngOnInit() {}
+
+  async verDetalle( id: string){
+    //regresa una promesa
+    const modal = await this.modalCtrl.create({
+      component: DetalleComponent,
+      componentProps: {
+        id
+      }
+    });
+    
+    modal.present();
+  }
 
   onClick(){
     console.log('cargar mas');
