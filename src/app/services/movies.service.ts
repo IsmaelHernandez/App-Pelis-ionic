@@ -13,6 +13,8 @@ const apikey = environment.apiKey;
 })
 export class MoviesService {
 
+  private popularesPage = 0;
+
   //inyectamos servicio de pelis
   constructor( private http:HttpClient) { }
 
@@ -27,7 +29,8 @@ export class MoviesService {
   //metodo peliculas populares
   getPopulares(){
 
-    const query = '/discover/movie?sort_by=popularity.desc';
+    this.popularesPage++;
+    const query = `/discover/movie?sort_by=popularity.desc&page=${this.popularesPage}`;
     return this.ejecutarQuery<RespuestaMDB>(query);
 
   }

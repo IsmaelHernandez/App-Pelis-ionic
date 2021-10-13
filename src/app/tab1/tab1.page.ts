@@ -23,12 +23,23 @@ export class Tab1Page implements OnInit {
       this.peliculasRecientes = resp.results;
     });
 
-    this.moviesService.getPopulares()
-      .subscribe( resp => {
+    this.getPopulares();
+  }
 
-      console.log('Populares',resp);
-      this.populares = resp.results;
-    });
+  cargarMas(){
+    this.getPopulares();
+  }
+
+  getPopulares(){
+    this.moviesService.getPopulares()
+    .subscribe( resp => {
+      //console.log('Populares',resp);
+      //agregar el arreglo de mas populares
+      const arrTemp = [ ...this.populares, ...resp.results];
+      this.populares = arrTemp;
+    // this.populares = resp.results;
+  });
+    
   }
 
 }
