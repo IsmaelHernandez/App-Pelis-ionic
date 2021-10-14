@@ -1,0 +1,12 @@
+.splash-animation {
+    //    background-color: rgba(0, 29, 82, 0.8) ;
+        width: 100%;
+        height: 100%;
+        .splash-img {
+            width: 100%;
+            margin-top: 90px;
+            -webkit-animation:slide-out-fwd-center 2s cubic-bezier(.55,.085,.68,.53) both;animation:slide-out-fwd-center 2s cubic-bezier(.55,.085,.68,.53) both    
+        }
+        @-webkit-keyframes slide-out-fwd-center{0%{-webkit-transform:translateZ(1);transform:translateZ(1);opacity:1}100%{-webkit-transform:translateZ(600px);transform:translateZ(600px);opacity:0}}@keyframes slide-out-fwd-center{0%{-webkit-transform:translateZ(1);transform:translateZ(1);opacity:1}100%{-webkit-transform:translateZ(600px);transform:translateZ(600px);opacity:0}}
+    }
+    
