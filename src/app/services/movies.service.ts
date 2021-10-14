@@ -36,12 +36,19 @@ export class MoviesService {
 
   }
 
-  //metodo obtener detalle pelicula
+  //metodo bucar pelicula
   getPeliculaDetalle( id: string)
   {
     return this.ejecutarQuery<PeliculaDetalle>(`/movie/${id}?a=1`);
 
   }
+
+   //metodo obtener detalle pelicula
+   buscarPeliculas( texto: string)
+   {
+     return this.ejecutarQuery(`/search/movie?query=${ texto }`);
+ 
+   }
 
    //metodo obtener detalle pelicula
    getActoresPelicula( id: string)
